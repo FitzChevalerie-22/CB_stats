@@ -1,9 +1,5 @@
 ###########  Reduire au max avec un fonction
 
-#from coinbase.wallet.client import Client
-#coinbase_API_key = 
-#coinbase_API_secret = 
-#client = Client(coinbase_API_key, coinbase_API_secret)
 import json
 from coinbase.wallet.client import Client
 cb_api_key = ""
