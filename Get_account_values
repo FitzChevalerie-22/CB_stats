@@ -2,66 +2,70 @@
 
 import json
 from coinbase.wallet.client import Client
-cb_api_key = ""
-cb_api_secret = ""
-client = Client(cb_api_key, cb_api_secret)
+key = ""
+scrt = ""
+client = Client(key, scrt)
 
-#### BTC ####
+def coinbase_client(api_key:str, api_secret:str):
+    client = Client(api_key, api_secret)
+    return client
 
-BTCaccount = client.get_account('BTC')
-#convert to dict. 
-BTCaccountdict = json.loads(json.dumps(BTCaccount))
+currencies_list = [
+    "ETH",
+    "BTC",
+    "LINK",
+    "MANA",
+    "FIL",
+    "MKR",
+    "ADA",
+    "SHIB",
+    "XLM",
+    "UNI",   
+    "LTC",
+    "ALGO",
+    "AMP",
+    "BAT",
+    "DOGE",
+    "OXT",
+    "XTZ",
+    "CRO",
+    "ANKR",
+    "SOL",
+    "CTSI",
+    "NU",
+    "FET",
+    "CLV",
+    "AUCTION",
+    "LRC",
+    "GRT",
+    "SKL",
+    "ICP",
+    "FORTH",
+    "DAI",
+    "ALCX",
+    "GALA",
+    "POLY"
+    ]
 
-#using dict to get the current BTC balance
-BTCbalance = BTCaccountdict['balance']['amount']
-print ("Solde BTC actuel", BTCbalance, )
+def total():    
+    total = 0
 
-####
+    for c in currencies_list:
+        total += valeur(c)
+    return round(total, 2)
 
-BTCaccount_EUR = client.get_account('BTC')
-#convert to dict. 
-BTCaccountdict = json.loads(json.dumps(BTCaccount_EUR))
+def valeur(wallets: str):
+    BTCaccount = client.get_account(wallets)
+    #convert to dict.
+    BTCaccountdict = json.loads(json.dumps(BTCaccount))
 
-#using dict to get the current BTC balance
-BTCbalance_EUR = BTCaccountdict['native_balance']['amount']
-print ("Solde BTC actuel", BTCbalance_EUR, "EUR")
+    #using dict to get the current BTC balance
+    BTCbalance = float(BTCaccountdict['balance']['amount'])
+    BTCnativebalance = BTCaccountdict['native_balance']['amount']
+    print (nom_du_portefeuille , "Quantité ",  BTCbalance, " Valeur ", BTCnativebalance, "EUR" )
+    return float(BTCaccountdict['native_balance']['amount'])
 
-#### ETH ####
 
-ETH_account = client.get_account('ETH')
-#convert to dict. 
-ETH_accountdict = json.loads(json.dumps(ETH_account))
 
-#using dict to get the current BTC balance
-ETH_balance = ETH_accountdict['balance']['amount']
-print ("Solde ETH actuel", ETH_balance, )
-
-####
-
-ETH_account_EUR = client.get_account('ETH')
-#convert to dict. 
-ETH_accountdict = json.loads(json.dumps(ETH_account_EUR))
-
-#using dict to get the current BTC balance
-ETH_balance_EUR = ETH_accountdict['native_balance']['amount']
-print ("Solde ETH actuel", ETH_balance_EUR, "EUR")
-
-#### MANA
-
-MANA_account = client.get_account('MANA')
-#convert to dict. 
-MANA_accountdict = json.loads(json.dumps(MANA_account))
-
-#using dict to get the current BTC balance
-MANA_balance = MANA_accountdict['balance']['amount']
-print ("Solde MANA actuel", MANA_balance, )
-
-####
-
-MANA_account_EUR = client.get_account('MANA')
-#convert to dict. 
-MANA_accountdict = json.loads(json.dumps(MANA_account_EUR))
-
-#using dict to get the current BTC balance
-MANA_balance_EUR = MANA_accountdict['native_balance']['amount']
-print ("Solde MANA actuel", MANA_balance_EUR, "EUR")
+total()
+print("Total: ", total(), "EUR")
