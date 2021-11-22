@@ -55,15 +55,15 @@ def total():
     return round(total, 2)
 
 def valeur(wallets: str):
-    BTCaccount = client.get_account(wallets)
+    account = client.get_account(wallets)
     #convert to dict.
-    BTCaccountdict = json.loads(json.dumps(BTCaccount))
+    accountdict = json.loads(json.dumps(account))
 
     #using dict to get the current BTC balance
-    BTCbalance = float(BTCaccountdict['balance']['amount'])
-    BTCnativebalance = BTCaccountdict['native_balance']['amount']
-    print (wallets , "Quantité ",  BTCbalance, " Valeur ", BTCnativebalance, "EUR" )
-    return float(BTCaccountdict['native_balance']['amount'])
+    balance = float(accountdict['balance']['amount'])
+    nativebalance = accountdict['native_balance']['amount']
+    print (wallets , "Quantité ",  balance, " Valeur ", nativebalance, "EUR" )
+    return float(accountdict['native_balance']['amount'])
 
 
 
