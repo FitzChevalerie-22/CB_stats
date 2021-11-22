@@ -62,7 +62,7 @@ def valeur(wallets: str):
     #using dict to get the current BTC balance
     BTCbalance = float(BTCaccountdict['balance']['amount'])
     BTCnativebalance = BTCaccountdict['native_balance']['amount']
-    print (nom_du_portefeuille , "Quantité ",  BTCbalance, " Valeur ", BTCnativebalance, "EUR" )
+    print (wallets , "Quantité ",  BTCbalance, " Valeur ", BTCnativebalance, "EUR" )
     return float(BTCaccountdict['native_balance']['amount'])
 
 
