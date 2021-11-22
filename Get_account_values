@@ -60,8 +60,8 @@ def valeur(wallets: str):
     accountdict = json.loads(json.dumps(account))
 
     #using dict to get the current BTC balance
-    balance = float(accountdict['balance']['amount'])
-    nativebalance = accountdict['native_balance']['amount']
+    balance = round(float(accountdict['balance']['amount']),2)
+    nativebalance = round(float(accountdict['native_balance']['amount']),2)]
     print (wallets , "Quantité ",  balance, " Valeur ", nativebalance, "EUR" )
     return float(accountdict['native_balance']['amount'])
 
