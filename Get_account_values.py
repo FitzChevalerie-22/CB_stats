@@ -49,7 +49,7 @@ currencies_list = [
 
 def total():    
     total = 0
-
+    # test
     for c in currencies_list:
         total += valeur(c)
     return round(total, 2)
@@ -61,7 +61,7 @@ def valeur(wallets: str):
 
     #using dict to get the current BTC balance
     balance = round(float(accountdict['balance']['amount']),2)
-    nativebalance = round(float(accountdict['native_balance']['amount']),2)]
+    nativebalance = round(float(accountdict['native_balance']['amount']),2)
     print (wallets , "Quantité ",  balance, " Valeur ", nativebalance, "EUR" )
     return float(accountdict['native_balance']['amount'])
 
